@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Kalkulator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="display" id="display">0</div>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('+')">+</button>
+        
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('-')">-</button>
+        
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('*')">*</button>
+        
+        <button onclick="clearDisplay('C')">C</button>
+        <button class="hasil-button" onclick="calculateResult()">=</button>
+        <button onclick="appendToDisplay('/')">/</button>
+      </div>
+
+    <script>
+        let display = document.getElementById("display");
+        let currentInput = "";
+
+        function appendToDisplay(value) {
+        currentInput += value;
+        display.innerText = currentInput;
+        }
+
+        function calculateResult() {
+        try {
+            const result = eval(currentInput);
+            display.innerText = result;
+            currentInput = result.toString();
+        } catch (error) {
+            display.innerText = "Error";
+            currentInput = "";
+        }
+        }
+
+        function clearDisplay() {
+            currentInput = "";
+            display.innerText = "0";
+        }
+
+    </script>
+</body>
+</html>
